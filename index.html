@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>사해방 보안팀 프리미엄 매뉴얼</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=DungGeunMo&display=swap');
+        * { box-sizing: border-box; font-family: 'DungGeunMo', 'Courier New', monospace; }
+        body { background-color: #050510; color: #ffffff; display: flex; justify-content: center; padding: 20px; margin: 0; }
+        .shop-container { width: 100%; max-width: 850px; background-color: #0a0a1a; border: 3px solid #00f0ff; box-shadow: 0 0 15px #00f0ff; border-radius: 8px; padding: 20px; }
+        .header-bar { display: flex; justify-content: space-between; font-size: 13px; color: #ff007f; margin-bottom: 15px; }
+        .title-box { text-align: center; border: 2px solid #ff007f; background: rgba(255, 0, 127, 0.05); padding: 15px; border-radius: 5px; margin-bottom: 20px; }
+        .title-box h1 { margin: 0; color: #ff007f; font-size: 28px; text-shadow: 0 0 8px #ff007f; }
+        .title-box p { margin: 5px 0 0 0; color: #ffd700; font-size: 14px; }
+        .rules-box { border: 2px solid #ffd700; background: rgba(255, 215, 0, 0.05); padding: 15px; border-radius: 5px; margin-bottom: 15px; }
+        .rules-box h3 { margin: 0 0 10px 0; color: #ffd700; }
+        .rules-box ul { margin: 0; padding-left: 20px; line-height: 1.6; }
+        .rules-box span { color: #00f0ff; }
+        .tip-box { border: 1px solid #00f0ff; background: rgba(0, 240, 255, 0.1); color: #00f0ff; padding: 10px 15px; font-size: 13px; border-radius: 4px; margin-bottom: 20px; }
+        .tab-menu { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 20px; }
+        .tab-btn { background: #0f1026; border: 2px solid #00f0ff; color: #ffffff; padding: 12px 5px; cursor: pointer; border-radius: 5px; font-size: 16px; transition: 0.2s; }
+        .tab-btn.active, .tab-btn:hover { background: #00f0ff; color: #000000; font-weight: bold; box-shadow: 0 0 10px #00f0ff; }
+        .step-content { display: none; border: 2px solid #333; border-radius: 5px; background: #0f1026; padding: 15px; }
+        .step-content.active { display: block; border-color: #00f0ff; }
+        .card-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #333; padding-bottom: 10px; margin-bottom: 10px; color: #00f0ff; font-weight: bold; }
+        .card-body { white-space: pre-line; line-height: 1.6; color: #e0e0e0; }
+        .code-box { display: block; background: #000; border: 1px solid #555; padding: 8px; color: #00ff66; font-size: 13px; margin-top: 5px; }
+        .copy-btn { background: #ff007f; border: none; color: white; padding: 6px 12px; cursor: pointer; border-radius: 4px; font-size: 13px; }
+        .copy-btn-sm { background: #00f0ff; border: none; color: black; padding: 2px 8px; cursor: pointer; border-radius: 3px; font-size: 12px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="shop-container">
+        <div class="header-bar">
+            <span>♥ ♥ ♥ SECURITY ITEM SHOP</span>
+            <span>⚡ SERVER: MAPLESTORY SAHAEBANG ⚡</span>
+            <span>♥ ♥ ♥</span>
+        </div>
+
+        <div class="title-box">
+            <h1>사해방 보안팀 실전 매뉴얼</h1>
+            <p>[ OFFICIAL MODERATION GUIDELINES & SCRIPT ]</p>
+        </div>
+
+        <div class="rules-box">
+            <h3>🎮 보안팀 현장 주도권 수칙</h3>
+            <ul>
+                <li><span>1. 진행자 1명 지정:</span> 사해방 발언은 주 진행자 1명만 전송하여 혼선 방지</li>
+                <li><span>2. 증거 우선 원칙:</span> 정황/뇌피셜 제외, 캡처본/영상 등 물증 팩트만 반영</li>
+                <li><span>3. 즉각 권한 행사:</span> 말 끊기 지속 시 음소거/채팅 잠금 주저 없이 적용</li>
+                <li><span>4. 태도 가중 처벌:</span> "경고 주고 끝내라" 등 비협조 시 경고 +1회 추가</li>
+            </ul>
+        </div>
+
+        <div class="tip-box">
+            💡 <b>Tip:</b> 원하는 단계를 클릭하여 고급 멘트를 확인하고, <b>[복사하기]</b> 버튼을 누르면 디스코드 채널에 즉시 붙여넣기(Ctrl+V)가 가능합니다.
+        </div>
+
+        <div class="tab-menu">
+            <button class="tab-btn active" onclick="openStep(1)">1단계<br><small>중재 선언</small></button>
+            <button class="tab-btn" onclick="openStep(2)">2단계<br><small>진술 & 증거</small></button>
+            <button class="tab-btn" onclick="openStep(3)">3단계<br><small>돌발 제재</small></button>
+            <button class="tab-btn" onclick="openStep(4)">4단계<br><small>종결 선언</small></button>
+        </div>
+
+        <div id="step1" class="step-content active">
+            <div class="card-header">
+                <span>🛡️ [1단계] 입장 및 중재 개시 선언</span>
+                <button class="copy-btn" onclick="copyText(document.getElementById('text1').innerText)">복사하기 📋</button>
+            </div>
+            <div class="card-body" id="text1">[보안팀 입장 및 중재 개시]
+
+안녕하십니까, 본 건의 중재를 맡은 보안팀장(담당관)입니다. 
+지금 이 시간부로 본 채널은 원활하고 공정한 사건 조정을 위한 공식 중재 구역으로 지정됩니다.
+
+원만한 진행을 위해 양측께서는 아래의 보안팀 수칙을 엄수해 주시기 바랍니다.
+
+1. 발언권 존중: 상대방의 발언 도중 끼어들거나 중단시키는 행위는 일체 금지됩니다. 반드시 발언 순서를 지켜주십시오.
+2. 팩트 중심 진술: 감정적 비방, 억측, 인신공격은 즉시 배제하며, 오직 객관적인 사실과 명확한 증거 자료만을 바탕으로 소명해 주십시오.
+3. 지시 불복종 제재: 본 보안팀 및 관리자의 통제와 지시에 불응할 경우, 절차에 따라 즉각적인 권한 제재 및 가중 처분의 대상이 될 수 있습니다.
+
+이상으로 수칙 고지를 갈음하며, 지금부터 본격적인 사건 조사를 개시합니다.</div>
+        </div>
+
+        <div id="step2" class="step-content">
+            <div class="card-header">
+                <span>📝 [2단계] 양측 진술 및 증거 소명 요구</span>
+                <button class="copy-btn" onclick="copyText(document.getElementById('text2').innerText)">복사하기 📋</button>
+            </div>
+            <div class="card-body" id="text2">[양측 진술 및 증거 소명 요구]
+
+먼저, 신고를 접수한 측의 요지 및 이에 대한 상대방의 반박 입장을 순차적으로 청취하겠습니다.
+
+- @피신고자 님께서는 현재 제기된 쟁점 사항에 대해 본인의 입장을 객관적이고 간결하게 진술해 주십시오.
+- 아울러 양측 모두 본인의 주장을 뒷받침할 수 있는 녹화 영상, 캡처본, 로그 등 공신력 있는 팩트 증거를 본 채널에 즉시 제출해 주시기 바랍니다.
+
+※ 정황 증거가 아닌 명확한 물증 위주로 확인하며, 상대방 진술 중 불필요한 언쟁이나 개입은 삼가 주십시오. 순서대로 발언권을 드리겠습니다.</div>
+        </div>
+
+        <div id="step3" class="step-content">
+            <div class="card-header">
+                <span>⚠️ [3단계] 현장 돌발 상황 통제 및 제재 멘트</span>
+            </div>
+            <div class="card-body">
+                <p><b>[말 끊기 및 난입 시]</b> <button class="copy-btn-sm" onclick="copyText('@태그 님, 발언권을 획득하지 않은 상태에서의 난입 및 발언 중단은 중재 방해 행위에 해당합니다. 차례를 기다려 주십시오. 경고 조치가 누적될 수 있습니다.')">복사</button></p>
+                <code class="code-box">@태그 님, 발언권을 획득하지 않은 상태에서의 난입 및 발언 중단은 중재 방해 행위에 해당합니다. 차례를 기다려 주십시오. 경고 조치가 누적될 수 있습니다.</code>
+
+                <p style="margin-top: 15px;"><b>[지시 불응 및 억지 부릴 시]</b> <button class="copy-btn-sm" onclick="copyText('@태그 님, 보안팀의 정당한 진행 지시에 거듭 불응하고 계십니다. 사해방 질서 유지 및 원활한 조사를 위해 부득이하게 [마이크 음소거 / 채팅 권한 제한] 조치를 적용하며, 이에 따른 규정 위반 경고 1회를 부과합니다.')">복사</button></p>
+                <code class="code-box">@태그 님, 보안팀의 정당한 진행 지시에 거듭 불응하고 계십니다. 사해방 질서 유지 및 원활한 조사를 위해 부득이하게 [마이크 음소거 / 채팅 권한 제한] 조치를 적용하며, 이에 따른 규정 위반 경고 1회를 부과합니다.</code>
+
+                <p style="margin-top: 15px;"><b>[태도 불량 시 ("그냥 경고 주고 끝내라" 등)]</b> <button class="copy-btn-sm" onclick="copyText('@태그 님, 본 중재 석상을 가볍게 여기거나 비협조적인 태도로 일관하시는 것은 보안팀의 권한을 무시하는 행위로 간주됩니다. 사해방 운영 규정에 의거하여 가중 처분이 적용됨을 엄중히 경고합니다.')">복사</button></p>
+                <code class="code-box">@태그 님, 본 중재 석상을 가볍게 여기거나 비협조적인 태도로 일관하시는 것은 보안팀의 권한을 무시하는 행위로 간주됩니다. 사해방 운영 규정에 의거하여 가중 처분이 적용됨을 엄중히 경고합니다.</code>
+            </div>
+        </div>
+
+        <div id="step4" class="step-content">
+            <div class="card-header">
+                <span>🚨 [4단계] 최종 종결 선언 (결과 유형별 선택)</span>
+            </div>
+            <div class="card-body">
+                <p><b>[유형 A] 상호 합의 및 조정 완료</b> <button class="copy-btn-sm" onclick="copyText('[사건 종결: 상호 합의 및 조정 완료]\n\n본 건과 관련하여 양측의 진술 청취 및 제출된 증거 자료를 면밀히 검토한 결과, 상호 원만한 합의가 성립되었음을 확인합니다.\n- 조치 사항: 상호 구두 경고 및 재발 방지 서약 체결\n- 안내: 본 건은 이것으로 종결되며, 향후 관련 사안을 빌미로 한 2차 가해, 뒷소문 유포, 보복성 행위가 포착될 경우 즉각 무관용 가중 처벌이 적용됩니다.')">복사</button></p>
+                <code class="code-box">[사건 종결: 상호 합의 및 조정 완료]
+- 조치 사항: 상호 구두 경고 및 재발 방지 서약 체결
+- 안내: 향후 2차 가해나 뒷소문 유포 포착 시 무관용 가중 처벌 적용</code>
+
+                <p style="margin-top: 15px;"><b>[유형 B] 규정 위반 확정 및 제재 처분</b> <button class="copy-btn-sm" onclick="copyText('[사건 종결: 규정 위반 확정 및 처분 집행]\n\n보안팀의 종합 조사 결과, 피의 사실 및 명백한 규정 위반 증거가 최종 확인되었습니다. 이에 따라 다음과 같이 처분을 집행합니다.\n- 처분 대상: @태그\n- 조치 내용: [경고 1회 / 서버 이용 제한 / 타임아웃 등]\n- 처벌 사유: 사해방 운영 규정에 따른 정당한 조치')">복사</button></p>
+                <code class="code-box">[사건 종결: 규정 위반 확정 및 처분 집행]
+- 처분 대상: @태그
+- 조치 내용: [경고 1회 / 서버 이용 제한 / 타임아웃 등]
+- 처벌 사유: 사해방 운영 규정에 따른 정당한 조치</code>
+
+                <p style="margin-top: 15px;"><b>[유형 C] 보안팀 직권 임의 종결</b> <button class="copy-btn-sm" onclick="copyText('[사건 종결: 보안팀 직권 임의 종결]\n\n당사자 일방의 지속적인 지시 불응, 고성 및 비협조적 태도로 인해 더 이상의 정상적인 중재 진행이 불가능하다고 판단하였습니다.\n- 조치 사항: 보안팀 직권에 의한 사건 임의 종결\n- 추가 처분: 조사 비협조의 책임을 물어 @태그 에 대한 규정 위반 경고가 추가 부과됩니다.')">복사</button></p>
+                <code class="code-box">[사건 종결: 보안팀 직권 임의 종결]
+- 조치 사항: 보안팀 직권에 의한 사건 임의 종결
+- 추가 처분: 비협조자에 대한 규정 위반 경고 추가 부과</code>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openStep(stepNum) {
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            const contents = document.querySelectorAll('.step-content');
+            contents.forEach(content => content.classList.remove('active'));
+            buttons[stepNum - 1].classList.add('active');
+            document.getElementById('step' + stepNum).classList.add('active');
+        }
+        function copyText(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert("📋 고급 중재 멘트가 복사되었습니다!\n디스코드 채널에 [Ctrl + V]로 붙여넣으세요.");
+            });
+        }
+    </script>
+</body>
+</html>
